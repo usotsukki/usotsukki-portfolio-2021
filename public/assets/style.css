@@ -1,0 +1,130 @@
+* {
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+
+:root {
+	--white: #fffffe;
+}
+
+html {
+	min-height: 100vh;
+	min-width: 100vw;
+	font-family: "Open Sans", sans-serif;
+	color: var(--white);
+	font-size: 16px;
+}
+
+body {
+	height: 200vh;
+	width: 100vw;
+	background-color: #111116;
+	overflow-x: hidden;
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+	display: none;
+}
+
+.main {
+	position: absolute;
+	height: 100vh;
+	width: 100vw;
+}
+
+.draw {
+	position: absolute;
+	height: 600px;
+	width: 600px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: black;
+}
+
+.header {
+	position: fixed;
+	width: 100vw;
+	padding-inline: 10vw;
+	display: flex;
+	justify-content: space-between;
+	top: 2rem;
+	height: 60px;
+	z-index: 99;
+}
+
+.nav-fs {
+	display: flex;
+	list-style-type: none;
+	justify-content: space-between;
+	align-items: center;
+	gap: 2rem;
+}
+.logo {
+	height: 100%;
+}
+
+.logo a {
+	text-decoration: none;
+	color: var(--white);
+	font-family: "Comforter", cursive;
+	font-size: 48px;
+	line-height: 60px;
+}
+
+.nav-link a {
+	color: var(--white);
+	text-decoration: none;
+	font-weight: 500;
+	font-size: 18px;
+}
+
+main {
+	position: relative;
+	width: 100vw;
+	height: auto;
+	min-height: 100vh !important;
+}
+
+main section {
+	position: absolute;
+	width: 80vw;
+	height: 100vh;
+	margin-inline: 10%;
+}
+
+.s1 {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #fffffe99;
+}
+.s1 p {
+	font-size: 70px;
+	font-weight: 800;
+}
+
+.name {
+	color: var(--white);
+	font-size: 90px !important;
+	text-transform: capitalize !important;
+	font-family: "Comforter", cursive;
+	cursor: pointer;
+}
+
+.developer {
+	color: black;
+	box-sizing: content-box;
+	text-shadow: 0 0 6px #ffffff; /* horizontal-offset vertical-offset 'blur' colour */
+	-moz-text-shadow: 0 0 2px #ffffff;
+	-webkit-text-shadow: 0 0 2px #ffffff;
+	text-transform: uppercase !important;
+	cursor: pointer;
+}
+
+.uzh {
+	color: var(--white);
+	cursor: pointer;
+}
