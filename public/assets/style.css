@@ -34,14 +34,12 @@ body::-webkit-scrollbar {
 	width: 100vw;
 }
 
-.draw {
+.p5Canvas {
 	position: absolute;
-	height: 600px;
-	width: 600px;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	background-color: black;
+	height: 100vh;
+	width: 100vw;
+	top: 0;
+	z-index: -1000;
 }
 
 .header {
@@ -72,6 +70,7 @@ body::-webkit-scrollbar {
 	font-family: "Comforter", cursive;
 	font-size: 48px;
 	line-height: 60px;
+	z-index: 100;
 }
 
 .nav-link a {
@@ -106,9 +105,9 @@ main section {
 	font-weight: 800;
 }
 
-.name {
+.s1 > .name {
 	color: var(--white);
-	font-size: 90px !important;
+	font-size: 90px;
 	text-transform: capitalize !important;
 	font-family: "Comforter", cursive;
 	cursor: pointer;
@@ -120,10 +119,14 @@ main section {
 	text-shadow: 0 0 6px #ffffff; /* horizontal-offset vertical-offset 'blur' colour */
 	-moz-text-shadow: 0 0 2px #ffffff;
 	-webkit-text-shadow: 0 0 2px #ffffff;
-	text-transform: uppercase !important;
+	text-transform: uppercase;
 	cursor: pointer;
+	text-overflow: hidden;
+	white-space: nowrap;
 }
-
+.flex {
+	display: flex;
+}
 .uzh {
 	color: var(--white);
 	cursor: pointer;

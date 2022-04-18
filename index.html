@@ -15,8 +15,34 @@
 			rel="stylesheet"
 		/>
 
-		<script src="/public/assets/script.js"></script>
-		<script src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/p5@1.4.1/lib/p5.js"
+			defer
+		></script>
+		<!-- ANIMATION SCRIPTS-->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.3/gsap.min.js"
+			integrity="sha512-6zTDRWNxo8vI6JZYDCwhrJpg5icK3P4HNnW3czsO5Scb3lAoPDam+/wF3eog4hxcl0h44d0XlIcFkuoSaWHQ2g=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+			defer
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/ScrollMagic.min.js"
+			defer
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/animation.gsap.min.js"
+			defer
+		></script>
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.7/plugins/debug.addIndicators.min.js"
+			defer
+		></script>
+
+		<!--MAIN SCRIPT-->
+		<script src="/public/assets/app.js" defer></script>
+		<script src="/public/assets/p5thing.js" defer></script>
 	</head>
 	<body>
 		<header class="header">
@@ -37,10 +63,16 @@
 		</header>
 		<main>
 			<section class="s1">
-				<p>Hi, my name is</p>
-				<p class="name">Vladislav Shkelebei</p>
-				<p>I am <b class="developer">Web-developer</b> from</p>
-				<p class="uzh">Uzhhorod</p>
+				<p class="tbd">Hi, my name is</p>
+				<p class="name">Vlad Shkelebei</p>
+				<div class="flex">
+					<p class="tbd">I am &nbsp;</p>
+					<p class="developer">Web-developer</p>
+				</div>
+				<div class="flex">
+					<p class="tbd">from &nbsp;</p>
+					<p class="uzh tbd">Uzhhorod</p>
+				</div>
 			</section>
 		</main>
 		<footer></footer>

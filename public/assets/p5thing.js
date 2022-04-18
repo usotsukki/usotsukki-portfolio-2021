@@ -1,25 +1,27 @@
 const particles = [];
 
-let speed = 2;
+let Speed = 2;
 
 let particleSize = 7;
 let backgroundColor = "#111116";
 
 // transition();
 
-let smin = 0 - speed;
-let smax = speed;
+let smin = 0 - Speed;
+let smax = Speed;
 
 function transition() {
-	speed *= 5;
+	Speed *= 5;
 	particleSize *= 20;
+
 	backgroundColor = "#11111601";
 }
 
 function setup() {
 	frameRate(30);
-	createCanvas(window.innerWidth, window.innerHeight);
+	const canv = createCanvas(window.innerWidth, window.innerHeight);
 
+	canv.position(0, 0, "fixed");
 	const particlesLength = Math.floor(window.innerWidth * 0.07);
 
 	for (let i = 0; i < particlesLength; i++) {
