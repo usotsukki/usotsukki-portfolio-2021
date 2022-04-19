@@ -52,7 +52,7 @@ function scrollSetup() {
 		ease: Power1,
 		opacity: 0,
 	});
-	tl.staggerTo(".tbd", 5, {
+	tl.staggerTo(".tbd", 2, {
 		opacity: 0,
 	});
 	tl.staggerTo(".developer", 5, {
@@ -62,13 +62,17 @@ function scrollSetup() {
 		x: devPosX,
 		opacity: 0.4,
 	});
+	tl.staggerTo(".projects", 15, {
+		opacity: 1,
+		x: -200,
+	});
 
 	let scene = new ScrollMagic.Scene({
-		triggerElement: ".s1",
+		triggerElement: "body",
 		duration: HEIGHT,
 		triggerHook: 0,
 	})
 		.setTween(tl)
-		.setPin(".s1")
+		.setPin("body")
 		.addTo(controller);
 }
