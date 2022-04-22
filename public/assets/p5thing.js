@@ -5,23 +5,18 @@ let Speed = 2;
 let particleSize = 7;
 let backgroundColor = "#111116";
 
-// transition();
-
+//particle speed
 let smin = 0 - Speed;
 let smax = Speed;
 
-function transition() {
-	Speed *= 5;
-	particleSize *= 20;
-
-	backgroundColor = "#11111601";
-}
-
 function setup() {
+	// performance related
 	frameRate(30);
 	const canv = createCanvas(window.innerWidth, window.innerHeight);
 
+	// disable scrolling
 	canv.position(0, 0, "fixed");
+	// number of particles (related to page size, affects performance)
 	const particlesLength = Math.floor(window.innerWidth * 0.07);
 
 	for (let i = 0; i < particlesLength; i++) {
@@ -37,22 +32,26 @@ function draw() {
 	});
 }
 
+// particle core
 class Particle {
+	// new particle with random XY
 	constructor() {
 		this.pos = createVector(random(width), random(height));
 		this.vel = createVector(random(smin, smax), random(smin, smax));
 		this.size = particleSize;
 	}
+	// move every frame avoiding edges
 	update() {
 		this.pos.add(this.vel);
 		this.edges();
 	}
+	// display particle
 	draw() {
 		noStroke();
-
 		fill(`rgba(255, 255, 255, 0.3)`);
 		circle(this.pos.x, this.pos.y, this.size);
 	}
+	// invert movement direction on hitting edge
 	edges() {
 		if (this.pos.x < 0 || this.pos.x > width) {
 			this.vel.x *= -1;
@@ -61,6 +60,7 @@ class Particle {
 			this.vel.y *= -1;
 		}
 	}
+	// connect nearby particles with lines
 	checkParticles(particles) {
 		particles.forEach((p) => {
 			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
