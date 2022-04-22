@@ -125,7 +125,7 @@ main section {
 .developer {
 	color: black;
 	box-sizing: content-box;
-	text-shadow: 0 0 6px #ffffff; /* horizontal-offset vertical-offset 'blur' colour */
+	text-shadow: 0 0 6px #ffffff;
 	-moz-text-shadow: 0 0 2px #ffffff;
 	-webkit-text-shadow: 0 0 2px #ffffff;
 	text-transform: uppercase;
