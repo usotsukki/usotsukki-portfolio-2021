@@ -1,17 +1,19 @@
 history.scrollRestoration = "manual";
+
 const HEIGHT = window.innerHeight;
 const WIDTH = window.innerWidth;
 
-// scrolling animations
+window.onload = function () {
+	window.scrollTo(0, 0);
+};
+
+// all of scrolling animations
 scrollSetup();
 
 function convertRemToPixels(rem) {
 	return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
 }
 
-window.onload = function () {
-	window.scrollTo(0, 0);
-};
 function scrollSetup() {
 	//name to logo transition
 	const name = document.querySelector(".name");
@@ -37,6 +39,8 @@ function scrollSetup() {
 
 	// timeline
 	let tl = new gsap.timeline();
+
+	// transition Name to Logo
 	tl.staggerTo(".name", 5, {
 		ease: Power1.easeOut,
 		fontSize: 48,
@@ -52,9 +56,13 @@ function scrollSetup() {
 		ease: Power1,
 		opacity: 0,
 	});
+
+	// remove unnecesary text from front-panel
 	tl.staggerTo(".tbd", 2, {
 		opacity: 0,
 	});
+
+	// WEB-DEVELOPER rotation
 	tl.staggerTo(".developer", 5, {
 		ease: Power1.easeIn,
 		rotation: -90,
@@ -62,11 +70,14 @@ function scrollSetup() {
 		x: devPosX,
 		opacity: 0.4,
 	});
+
+	// Projects to front-panel
 	tl.staggerTo(".projects", 15, {
 		opacity: 1,
 		x: -200,
 	});
 
+	// chain all to scroll
 	let scene = new ScrollMagic.Scene({
 		triggerElement: "body",
 		duration: HEIGHT,
