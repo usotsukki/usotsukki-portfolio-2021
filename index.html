@@ -6,7 +6,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Home</title>
 
-		<link rel="stylesheet" href="/public/assets/style.css" />
+		<link rel="stylesheet" href="style.css" />
 
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,8 +41,8 @@
 		></script>
 
 		<!--MAIN SCRIPT-->
-		<script src="/public/assets/app.js" defer></script>
-		<script src="/public/assets/p5thing.js" defer></script>
+		<script src="./src/app.js" defer></script>
+		<script src="./src/p5thing.js" defer></script>
 	</head>
 	<body>
 		<header class="header">
@@ -76,21 +76,31 @@
 			</section>
 			<section id="projects" class="projects">
 				<div class="pr-label">projects</div>
-				<div class="project">
-					<h1>hotel website</h1>
-				</div>
-				<div class="project">
-					<h1>revenue managment</h1>
-				</div>
-				<div class="project">
-					<h1>towers of hanoi</h1>
-				</div>
-				<div class="project">
-					<h1>personal website</h1>
-				</div>
-				<div class="project">
-					<h1>poker app</h1>
-				</div>
+				<a href="https://hotel-antonio.herokuapp.com/" target="_blank">
+					<div class="project">
+						<h1>hotel website</h1>
+					</div>
+				</a>
+				<a href="/hanoi/hanoi.html" target="_blank">
+					<div class="project">
+						<h1>towers of hanoi</h1>
+					</div>
+				</a>
+				<a href="/pokerApp/poker.html" target="_blank">
+					<div class="project">
+						<h1>poker app</h1>
+					</div>
+				</a>
+				<a href="http://hotelrevenuestreams.herokuapp.com/" target="_blank">
+					<div class="project">
+						<h1>revenue managment</h1>
+					</div>
+				</a>
+				<a href="#">
+					<div class="project">
+						<h1>personal website</h1>
+					</div>
+				</a>
 			</section>
 		</main>
 		<footer></footer>
