@@ -1,4 +1,4 @@
-  [submodule "hanoiVis"] 
+  [submodule "hanoiVisual"] 
   path = hanoiVis 
   url = https://github.com/usotsukki/hanoiVisual.git/
 
