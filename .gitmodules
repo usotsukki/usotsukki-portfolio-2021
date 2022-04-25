@@ -1,6 +1,6 @@
-  [submodule "hanoiVisual"] 
-  path = hanoiVis 
-  url = https://github.com/usotsukki/hanoiVisual.git/
+  [submodule "hanoi"] 
+  path = hanoi 
+  url = https://github.com/usotsukki/hanoiVisual.git
 
   [submodule "pokerApp"] 
   path = pokerApp
