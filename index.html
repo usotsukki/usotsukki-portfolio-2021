@@ -41,67 +41,72 @@
 		></script>
 
 		<!--MAIN SCRIPT-->
-		<script src="./src/app.js" defer></script>
+		<script type="module" src="./src/app.js" defer></script>
 		<script src="./src/p5thing.js" defer></script>
 	</head>
 	<body>
 		<header class="header">
-			<div class="logo">
-				<a href="#">Vlad S</a>
+			<div class="flex-container">
+				<div class="nav-bar">
+					<div class="logo">
+						<a href="#">Vlad S</a>
+					</div>
+					<ul class="nav-fs">
+						<li class="nav-link">
+							<a href="#"> Resume </a>
+						</li>
+						<li class="nav-link">
+							<a href="#"> Projects </a>
+						</li>
+						<li class="nav-link">
+							<a href="#"> Contact </a>
+						</li>
+					</ul>
+				</div>
 			</div>
-			<ul class="nav-fs">
-				<li class="nav-link">
-					<a href="#"> Resume </a>
-				</li>
-				<li class="nav-link">
-					<a href="#"> Projects </a>
-				</li>
-				<li class="nav-link">
-					<a href="#"> Contact </a>
-				</li>
-			</ul>
 		</header>
 		<main>
-			<section class="s1">
-				<p class="tbd">Hi, my name is</p>
-				<p class="name">Vlad Shkelebei</p>
-				<div class="flex">
-					<p class="tbd">I am &nbsp;</p>
-					<p class="developer">Web-developer</p>
-				</div>
-				<div class="flex">
-					<p class="tbd">from &nbsp;</p>
-					<p class="uzh tbd">Uzhhorod</p>
-				</div>
-			</section>
-			<section id="projects" class="projects">
-				<div class="pr-label">projects</div>
-				<a href="https://hotel-antonio.herokuapp.com/" target="_blank">
-					<div class="project">
-						<h1>hotel website</h1>
+			<div class="flex-container">
+				<section class="s1">
+					<p class="tbd">Hi, my name is</p>
+					<p class="name">Vlad Shkelebei</p>
+					<div class="flex">
+						<p class="tbd">I am &nbsp;</p>
+						<p class="developer">Web-developer</p>
 					</div>
-				</a>
-				<a href="/hanoi/hanoi.html" target="_blank">
-					<div class="project">
-						<h1>towers of hanoi</h1>
+					<div class="flex">
+						<p class="tbd">from &nbsp;</p>
+						<p class="uzh tbd">Uzhhorod</p>
 					</div>
-				</a>
-				<a href="/pokerApp/poker.html" target="_blank">
-					<div class="project">
-						<h1>poker app</h1>
-					</div>
-				</a>
-				<a href="http://hotelrevenuestreams.herokuapp.com/" target="_blank">
-					<div class="project">
-						<h1>revenue managment</h1>
-					</div>
-				</a>
-				<a href="#">
-					<div class="project">
-						<h1>personal website</h1>
-					</div>
-				</a>
-			</section>
+				</section>
+				<section id="projects" class="projects">
+					<a href="https://hotel-antonio.herokuapp.com/" target="_blank">
+						<div class="project">
+							<h1>hotel website</h1>
+						</div>
+					</a>
+					<a href="/hanoi/hanoi.html" target="_blank">
+						<div class="project">
+							<h1>towers of hanoi</h1>
+						</div>
+					</a>
+					<a href="/pokerApp/poker.html" target="_blank">
+						<div class="project">
+							<h1>poker app</h1>
+						</div>
+					</a>
+					<a href="http://hotelrevenuestreams.herokuapp.com/" target="_blank">
+						<div class="project">
+							<h1>revenue managment</h1>
+						</div>
+					</a>
+					<a href="#">
+						<div class="project">
+							<h1>personal website</h1>
+						</div>
+					</a>
+				</section>
+			</div>
 		</main>
 		<footer></footer>
 	</body>
