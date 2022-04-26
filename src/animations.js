@@ -20,7 +20,7 @@ export function scrollSetup() {
 	// developer to vertical
 	const developer = document.querySelector(".developer");
 	const devRect = developer.getBoundingClientRect();
-	const devPosX = WIDTH - (devRect.right - (window.innerWidth - WIDTH) / 2);
+	const devPosX = WIDTH - (devRect.right + (window.innerWidth - WIDTH) / 2);
 
 	// ScrollMagic controller
 	const controller = new ScrollMagic.Controller();
@@ -55,25 +55,34 @@ export function scrollSetup() {
 	// WEB-DEVELOPER rotation
 	tl.staggerTo(".developer", 5, {
 		ease: Power1.easeIn,
-		rotation: -90,
 		fontSize: convertRemToPixels(8),
+		rotation: -90,
 		x: devPosX,
 		opacity: 0.3,
 	});
+	//nav transition {
+	tl.staggerTo(".nav-fs", 5, {
+		x: convertRemToPixels(5),
+		opacity: 0,
+	});
 
 	// Projects to front-panel
-	tl.staggerTo(".projects", 15, {
+	tl.staggerTo(".projects", 5, {
 		opacity: 1,
 		x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(5)),
+	});
+	tl.staggerTo(".link-bar", 5, {
+		opacity: 0.7,
+		y: convertRemToPixels(4),
 	});
 
 	// chain all to scroll
 	let scene = new ScrollMagic.Scene({
-		triggerElement: "body",
+		triggerElement: "main",
 		duration: HEIGHT,
 		triggerHook: 0,
 	})
 		.setTween(tl)
-		.setPin("body")
+		.setPin("main")
 		.addTo(controller);
 }

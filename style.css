@@ -18,8 +18,8 @@ html {
 }
 
 body {
-	height: 200vh;
 	width: 100vw;
+
 	background-color: var(--dark);
 	z-index: 1;
 	overflow-x: hidden;
@@ -55,7 +55,6 @@ body::-webkit-scrollbar {
 	z-index: 99;
 }
 .flex-container {
-	border: 1px solid red;
 	width: 90%;
 	max-width: 1200px;
 	display: flex;
@@ -117,10 +116,13 @@ main section {
 }
 
 .s1 {
+	height: 100vh;
+	user-select: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	color: #fffffe99;
+	overflow: hidden;
 }
 .s1 p {
 	font-size: 3rem;
@@ -133,7 +135,6 @@ main section {
 	font-size: 5rem;
 	text-transform: capitalize !important;
 	font-family: "Comforter", cursive;
-	cursor: pointer;
 }
 
 .developer {
@@ -143,12 +144,14 @@ main section {
 	-moz-text-shadow: 0 0 2px #ffffff;
 	-webkit-text-shadow: 0 0 2px #ffffff;
 	text-transform: uppercase;
-	cursor: pointer;
 	text-overflow: hidden;
 	white-space: nowrap;
 }
 .flex {
 	display: flex;
+}
+.d-none {
+	display: none;
 }
 .uzh {
 	color: var(--white);
@@ -159,9 +162,10 @@ main section {
 	position: absolute;
 	top: 0;
 	right: -5rem;
-
+	text-align: right;
 	display: flex;
 	flex-direction: column;
+	align-items: flex-end;
 	padding-top: 175px;
 }
 .projects a {
@@ -169,7 +173,7 @@ main section {
 }
 .project {
 	position: relative;
-	width: auto;
+	width: max-content;
 	height: auto;
 	text-align: right;
 }
@@ -185,6 +189,42 @@ main section {
 }
 .project h1:hover {
 	color: var(--white);
+}
+.link-bar {
+	position: absolute;
+	bottom: 4rem;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 200px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 100;
+	height: 100px;
+	gap: 3rem;
+	opacity: 0;
+}
+.github {
+	background-image: url("./resources/SVG/github-logo.svg");
+	background-size: cover;
+
+	width: 25px;
+	height: 25px;
+}
+.mail {
+	background-image: url("./resources/SVG/mail.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	width: 40px;
+	height: 25px;
+}
+.cv {
+	background-image: url("./resources/SVG/cv.svg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	width: 20px;
+	height: 25px;
 }
 @media (max-width: 60rem) {
 	html {
