@@ -76,7 +76,7 @@ body::-webkit-scrollbar {
 }
 .logo {
 	height: 100%;
-	opacity: 1;
+	opacity: 0;
 }
 
 .logo a {
@@ -123,13 +123,14 @@ main section {
 	color: #fffffe99;
 }
 .s1 p {
-	font-size: 4rem;
+	font-size: 3rem;
+	word-wrap: nowrap;
 	font-weight: 800;
 }
 
 .s1 > .name {
 	color: var(--white);
-	font-size: 6rem;
+	font-size: 5rem;
 	text-transform: capitalize !important;
 	font-family: "Comforter", cursive;
 	cursor: pointer;
@@ -198,3 +199,8 @@ main section {
 		display: none;
 	}
 }
+@media (max-width: 400px) {
+	html {
+		font-size: 8px;
+	}
+} ;

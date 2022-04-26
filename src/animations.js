@@ -30,6 +30,7 @@ export function scrollSetup() {
 	let tl = new gsap.timeline();
 
 	// transition Name to Logo
+	tl.staggerTo(".my-name-is", 2, { opacity: 0, ease: Power1.easeOut });
 	tl.staggerTo(".name", 5, {
 		ease: Power1.easeOut,
 		fontSize: convertRemToPixels(3),
