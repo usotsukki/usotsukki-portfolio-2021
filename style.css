@@ -203,6 +203,16 @@ main section {
 	height: 100px;
 	gap: 3rem;
 	opacity: 0;
+	transition: all 0.3s ease-in-out;
+	display: none;
+}
+.link-bar a {
+	transition: all 0.3s ease-in-out;
+}
+.link-bar a:hover {
+	opacity: 1;
+	transform: scale(1.1);
+	text-shadow: 0 0 50px 10px white;
 }
 .github {
 	background-image: url("./resources/SVG/github-logo.svg");

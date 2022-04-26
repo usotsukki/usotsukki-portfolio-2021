@@ -74,6 +74,17 @@ export function scrollSetup() {
 	tl.staggerTo(".link-bar", 5, {
 		opacity: 0.7,
 		y: convertRemToPixels(4),
+		css: {
+			position: "absolute",
+			bottom: "1rem",
+			left: "50%",
+			transform: "translateX(-50%)",
+			width: "200px",
+			display: "flex",
+			height: "100px",
+			gap: "3rem",
+			opacity: 1,
+		},
 	});
 
 	// chain all to scroll
