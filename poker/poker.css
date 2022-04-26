@@ -1,0 +1,94 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+html {
+	min-height: 100vh;
+	width: 100vw;
+	font-size: 16px;
+}
+.flex-container {
+	width: 80%;
+	height: 70vh;
+
+	max-width: 1200px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	gap: 5rem;
+	padding: 3rem 0;
+}
+
+.table {
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgb(56, 88, 191);
+	background: radial-gradient(
+		circle,
+		rgba(56, 88, 191, 1) 0%,
+		rgba(0, 0, 0, 1) 98%
+	);
+}
+.community-cards,
+.player-cards {
+	display: flex;
+	gap: 1rem;
+}
+.card {
+	width: calc(2.5 * 2.5rem);
+	height: calc(3.5 * 2.5rem);
+	border: 2px solid #fffeeec1;
+	border-radius: 5px;
+	background-size: cover;
+	background-position: center;
+	transition: all 0.3s ease-in-out;
+}
+
+.buttons button {
+	width: 120px;
+	height: 60px;
+	font-size: 24px;
+	background-color: darkblue;
+	color: white;
+	border: 2px solid #fffeeec1;
+	border-radius: 1rem;
+}
+#new-deck {
+	background-color: darkred;
+}
+
+.d-none {
+	display: none;
+}
+.response {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	color: white;
+	font-size: 12px;
+}
+@media (max-width: 60rem) {
+	html {
+		font-size: 14px;
+	}
+}
+@media (max-width: 35rem) {
+	html {
+		font-size: 12px;
+	}
+}
+@media (max-width: 450px) {
+	html {
+		font-size: 10px;
+	}
+}
+@media (max-width: 400px) {
+	html {
+		font-size: 8px;
+	}
+}
