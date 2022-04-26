@@ -30,9 +30,14 @@ html {
 }
 body {
 	background-color: var(--dark);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 }
 .container {
 	width: 90vw;
+	max-width: 1200px;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
@@ -40,21 +45,29 @@ body {
 	align-items: center;
 }
 .title {
-	font-size: 32px;
+	font-size: 2rem;
 	font-weight: 600;
 	margin-bottom: 50px;
+	text-align: center;
 }
 .input-h {
 	margin: 25px;
 	display: flex;
 	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+.input-inner {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 .input-h input {
 	background-color: var(--c1);
 	border: 3px solid var(--c2);
 	color: var(--light);
-	font-size: 24px;
-	width: 120px;
+	font-size: 1.5rem;
+	width: 6rem;
 	height: 50px;
 	text-align: center;
 	margin: 10px;
@@ -66,11 +79,11 @@ body {
 	border: 3px solid var(--light);
 }
 .input-h label {
-	font-size: 18px;
+	font-size: 1.1rem;
 }
 .btn-h {
 	background-color: #278c70a1;
-	width: 120px;
+	width: 6rem;
 	height: 50px;
 	margin: 10px;
 	border: 3px solid var(--light);
@@ -113,15 +126,16 @@ body {
 	border: 3px solid var(--c2);
 }
 .towers {
+	padding: 0 5rem;
 	display: flex;
-	width: 80vw;
+	width: 90vw;
 	max-width: 600px;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 100px;
 }
 .tower {
-	width: 25px;
+	width: 1.5rem;
 	height: 200px;
 	background-color: #278c7099;
 	display: flex;
@@ -133,7 +147,7 @@ body {
 .layer {
 	opacity: 1;
 	aspect-ratio: 6;
-	background-color: red;
+
 	border-radius: 25px;
 	position: relative;
 	max-width: 1000%;
@@ -162,7 +176,7 @@ b {
 	list-style: disc;
 }
 .warning {
-	width: 120px;
+	width: 6rem;
 	height: 50px;
 	font-size: 16px;
 	display: flex;
@@ -178,37 +192,39 @@ b {
 	z-index: -100;
 }
 .warning.invis {
-	transform: translateX(-130px);
+	transform: translateX(calc(-6rem - 10px));
 	opacity: 0;
 }
 
-@media (max-width: 50rem) {
-	body {
-		padding-top: 5rem;
-		padding-bottom: 5rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-	.title {
-		font-size: 24px;
-		text-align: center;
-	}
-	.tower {
-		width: 20px;
-	}
-	.towers {
-		width: 50vw;
-	}
-}
 .learn-more {
 	text-decoration: underline;
 	opacity: 0.6;
 	transition: all 0.2s ease-in-out;
-	margin: 20px;
+	margin: 2rem;
 	cursor: pointer;
 }
 .learn-more:hover {
 	opacity: 1;
+}
+
+@media (max-width: 60rem) {
+	html {
+		font-size: 14px;
+	}
+}
+@media (max-width: 35rem) {
+	html {
+		font-size: 12px;
+	}
+	.input-inner {
+		width: 100%;
+	}
+}
+@media (max-width: 500px) {
+	html {
+		font-size: 10px;
+	}
+	.tower {
+		width: 20px;
+	}
 }

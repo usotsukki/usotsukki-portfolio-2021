@@ -13,18 +13,20 @@
 			<div class="title">Towers of Hanoi: Algorithm Visualisation</div>
 			<div class="input-h">
 				<label for="height">Enter height of your tower (1-8)</label>
-				<button id="reset" class="btn-h inv d-none">Reset</button>
-				<input
-					id="height"
-					type="text"
-					placeholder="Height"
-					autocomplete="off"
-					value="4"
-				/>
-				<button id="start" class="btn-h" type="submit">Build</button>
+				<div class="input-inner">
+					<button id="reset" class="btn-h inv d-none">Reset</button>
+					<input
+						id="height"
+						type="text"
+						placeholder="Height"
+						autocomplete="off"
+						value="4"
+					/>
+					<button id="start" class="btn-h" type="submit">Build</button>
 
-				<button id="next" class="btn-h move d-none">Start</button>
-				<button id="increase-speed" class="btn-h move d-none">Faster</button>
+					<button id="next" class="btn-h move d-none">Start</button>
+					<button id="increase-speed" class="btn-h move d-none">Faster</button>
+				</div>
 				<div class="warning invis d-none">only numbers from 1 to 8</div>
 			</div>
 			<div class="towers">
