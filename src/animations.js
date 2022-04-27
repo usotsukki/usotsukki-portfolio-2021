@@ -1,46 +1,43 @@
-function convertRemToPixels(rem) {
-	return rem * parseFloat(getComputedStyle(document.documentElement).fontSize);
-}
+import { getRandomInt, convertRemToPixels } from "./utils.js";
 
 export function scrollSetup() {
-	const HEIGHT = window.innerHeight;
 	const WIDTH = document.querySelector(".flex-container").clientWidth;
-
 	//name to logo transition
 	const name = document.querySelector(".name");
-	const logo = document.querySelector(".logo");
 	let nameRect = name.getBoundingClientRect();
 	let nameOffset = (nameRect.top + nameRect.bottom) / 2 + window.scrollY;
 
+	const logo = document.querySelector(".logo");
 	let logoRect = logo.getBoundingClientRect();
 	let logoOffset = (logoRect.top + logoRect.bottom) / 2 + window.scrollY;
 
 	const nameToLogo = logoOffset - nameOffset;
 
-	// developer to vertical
-	const developer = document.querySelector(".developer");
-	const devRect = developer.getBoundingClientRect();
-	const devPosX = WIDTH - (devRect.right + (window.innerWidth - WIDTH) / 2);
-
 	// ScrollMagic controller
 	const controller = new ScrollMagic.Controller();
-	// hiding unnececary for now stuff
 
 	// timeline
 	let tl = new gsap.timeline();
+
+	//prepare projects
+	const projects = [...document.querySelectorAll(".project")];
+	projects.forEach((p) => {
+		tl.staggerTo(p, 0, {
+			x: convertRemToPixels(getRandomInt(-20, 20)),
+			opacity: 0,
+		});
+	});
 
 	// transition Name to Logo
 	tl.staggerTo(".my-name-is", 2, { opacity: 0, ease: Power1.easeOut });
 	tl.staggerTo(".name", 5, {
 		ease: Power1.easeOut,
 		fontSize: convertRemToPixels(3),
-
 		y: nameToLogo,
 		x: 0,
 	});
-
 	tl.staggerTo(".logo", 1, {
-		opacity: 100,
+		opacity: 1,
 	});
 	tl.staggerTo(".name", 5, {
 		ease: Power1,
@@ -48,49 +45,54 @@ export function scrollSetup() {
 	});
 
 	// remove unnecesary text from front-panel
-	tl.staggerTo(".tbd", 2, {
-		opacity: 0,
+	[...document.querySelectorAll(".tbd")].forEach((e) => {
+		tl.staggerTo(e, 2, {
+			x: convertRemToPixels(getRandomInt(-20, 20)),
+			y: convertRemToPixels(getRandomInt(-20, 20)),
+			opacity: 0,
+		});
 	});
 
 	// WEB-DEVELOPER rotation
 	tl.staggerTo(".developer", 5, {
-		ease: Power1.easeIn,
-		fontSize: convertRemToPixels(8),
-		rotation: -90,
-		x: devPosX,
-		opacity: 0.3,
+		css: {
+			transform: "rotate(90deg) translate(50%,1000%)",
+			color: "black",
+			"box-sizing": "content-box",
+			"text-shadow": "0 0 6px #ffffff80",
+			"font-size": "10rem",
+			"text-transform": "uppercase",
+			"white-space": "nowrap",
+			opacity: ".5",
+		},
 	});
+	tl.staggerTo(".s1", 2, {
+		css: {
+			overflow: "hidden",
+		},
+	});
+
 	//nav transition {
 	tl.staggerTo(".nav-fs", 5, {
 		x: convertRemToPixels(5),
 		opacity: 0,
 	});
 
-	// Projects to front-panel
+	// Projects-section to front-panel
 	tl.staggerTo(".projects", 5, {
 		opacity: 1,
-		x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(5)),
-	});
-	tl.staggerTo(".link-bar", 5, {
-		opacity: 0.7,
-		y: convertRemToPixels(4),
-		css: {
-			position: "absolute",
-			bottom: "1rem",
-			left: "50%",
-			transform: "translateX(-50%)",
-			width: "200px",
-			display: "flex",
-			height: "100px",
-			gap: "3rem",
-			opacity: 1,
-		},
+		x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(7)),
 	});
 
-	// chain all to scroll
+	//display projects
+	projects.forEach((p) => {
+		tl.staggerTo(p, 4, { x: -convertRemToPixels(0), opacity: 1 });
+	});
+
+	// chain all to scrollmagic controller
 	let scene = new ScrollMagic.Scene({
 		triggerElement: "main",
-		duration: HEIGHT,
+		duration: window.innerHeight * 1.5,
 		triggerHook: 0,
 	})
 		.setTween(tl)
