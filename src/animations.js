@@ -28,6 +28,9 @@ export function scrollSetup() {
 		});
 	});
 
+	//scrolled
+	tl.to(".scroll-please", 3, { opacity: 0 });
+
 	// transition Name to Logo
 	tl.staggerTo(".my-name-is", 2, { opacity: 0, ease: Power1.easeOut });
 	tl.staggerTo(".name", 5, {
@@ -81,7 +84,7 @@ export function scrollSetup() {
 	// Projects-section to front-panel
 	tl.staggerTo(".projects", 5, {
 		opacity: 1,
-		x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(7)),
+		//x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(7)),
 	});
 
 	//display projects

@@ -114,7 +114,7 @@ main section {
 	position: relative;
 	width: 100%;
 	height: auto;
-	min-height: 30rem;
+	min-height: 40rem;
 }
 
 .s1 {
@@ -167,7 +167,7 @@ main section {
 	min-height: calc(45rem);
 	opacity: 0;
 	top: 0;
-	right: -7rem;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -246,6 +246,56 @@ main section {
 	width: 1.3rem;
 	height: 1.6rem;
 }
+
+.scroll-please {
+	position: absolute;
+	user-select: none;
+	left: 50%;
+	bottom: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.mouse {
+	width: 25px;
+	height: 40px;
+	border: 2px solid rgb(255, 255, 255);
+	border-radius: 20px;
+	display: flex;
+}
+
+.mouse span {
+	width: 7px;
+	height: 7px;
+	background-color: white;
+	border-radius: 50%;
+	display: block;
+	margin: auto;
+	animation: move-wheel 1s linear infinite;
+}
+
+.arrow span {
+	display: block;
+	width: 10px;
+	height: 10px;
+	border: 2px solid transparent;
+	border-right-color: white;
+	border-bottom-color: white;
+	transform: rotate(45deg);
+}
+
+@keyframes move-wheel {
+	0% {
+		opacity: 0;
+		transform: translateY(-100%);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(100%);
+	}
+}
+
 @media (max-width: 60rem) {
 	html {
 		font-size: 12px;
@@ -260,6 +310,17 @@ main section {
 	}
 	.s1 {
 		padding-bottom: 3rem;
+	}
+
+	.mouse {
+		width: 15px;
+		height: 25px;
+		border-radius: 15px;
+	}
+
+	.mouse span {
+		width: 5px;
+		height: 5px;
 	}
 }
 @media (max-width: 400px) {
