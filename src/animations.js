@@ -1,7 +1,6 @@
 import { getRandomInt, convertRemToPixels } from "./utils.js";
 
 export function scrollSetup() {
-	const WIDTH = document.querySelector(".flex-container").clientWidth;
 	//name to logo transition
 	const name = document.querySelector(".name");
 	let nameRect = name.getBoundingClientRect();
@@ -18,7 +17,6 @@ export function scrollSetup() {
 
 	// timeline
 	let tl = new gsap.timeline();
-
 	//prepare projects
 	const projects = [...document.querySelectorAll(".project")];
 	projects.forEach((p) => {
@@ -55,23 +53,23 @@ export function scrollSetup() {
 			opacity: 0,
 		});
 	});
+	[...document.querySelectorAll(".tbd")].forEach((e) => {
+		tl.staggerTo(e, 0, {
+			css: { display: "none" },
+		});
+	});
 
 	// WEB-DEVELOPER rotation
 	tl.staggerTo(".developer", 5, {
 		css: {
-			transform: "rotate(90deg) translate(50%,1000%)",
-			color: "black",
-			"box-sizing": "content-box",
-			"text-shadow": "0 0 6px #ffffff80",
+			transform: "rotate(90deg) translate(75%,920%)",
 			"font-size": "10rem",
-			"text-transform": "uppercase",
-			"white-space": "nowrap",
-			opacity: ".5",
+			opacity: 0.5,
 		},
 	});
 	tl.staggerTo(".s1", 2, {
 		css: {
-			overflow: "hidden",
+			overflowY: "hidden",
 		},
 	});
 
@@ -83,13 +81,18 @@ export function scrollSetup() {
 
 	// Projects-section to front-panel
 	tl.staggerTo(".projects", 5, {
-		opacity: 1,
-		//x: -((window.innerWidth - WIDTH) / 2 + convertRemToPixels(7)),
+		css: {
+			display: "flex",
+			opacity: 1,
+		},
 	});
 
 	//display projects
 	projects.forEach((p) => {
-		tl.staggerTo(p, 4, { x: -convertRemToPixels(0), opacity: 1 });
+		tl.staggerTo(p, 4, {
+			x: -convertRemToPixels(0),
+			opacity: 1,
+		});
 	});
 
 	// chain all to scrollmagic controller

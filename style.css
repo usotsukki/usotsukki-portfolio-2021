@@ -78,9 +78,10 @@ body::-webkit-scrollbar {
 .logo {
 	height: 100%;
 	opacity: 0;
+	user-select: none;
 }
 
-.logo a {
+.logo h3 {
 	text-decoration: none;
 	color: var(--white);
 	font-family: "Comforter", cursive;
@@ -131,7 +132,9 @@ main section {
 	word-wrap: nowrap;
 	font-weight: 800;
 }
-
+.s1 a {
+	text-decoration: none;
+}
 .s1 > .name {
 	color: var(--white);
 	font-size: 5rem;
@@ -167,8 +170,7 @@ main section {
 	min-height: calc(45rem);
 	opacity: 0;
 	top: 0;
-
-	display: flex;
+	display: none;
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: flex-end;
