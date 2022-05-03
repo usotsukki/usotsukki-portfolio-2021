@@ -1,14 +1,14 @@
 const particles = [];
-let Speed = 2;
+let Speed = 0.7;
 let particleSize = 7;
 let backgroundColor = "#111116";
 //particle speed
 let smin = 0 - Speed;
 let smax = Speed;
-
+const fps = 60;
 function setup() {
 	// performance related
-	frameRate(30);
+	frameRate(fps);
 	const canv = createCanvas(window.innerWidth, window.innerHeight);
 
 	// disable scrolling
@@ -36,6 +36,8 @@ class Particle {
 		this.pos = createVector(random(width), random(height));
 		this.vel = createVector(random(smin, smax), random(smin, smax));
 		this.size = particleSize;
+		this.connected = 1;
+		this.color = `255,255,255`;
 	}
 	// move every frame avoiding edges
 	update() {
@@ -59,12 +61,27 @@ class Particle {
 	}
 	// connect nearby particles with lines
 	checkParticles(particles) {
-		particles.forEach((p) => {
+		particles.forEach((p, i, arr) => {
 			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 			if (d < 150) {
-				stroke(`rgba(255,255,255,.1)`);
+				const prev = arr[i - 1 > -1 ? i - 1 : 0];
+				prev.connected *= 1.1;
+				p.connected *= 1.1;
+
+				let color = `255,255,255`;
+				if (p.connected > 1.8) color = `10,189,198`;
+				if (p.connected > 3) color = `255,59,148`;
+				if (p.connected > 5) color = `255,0,0`;
+				const strokeOpacity = p.connected * 0.11;
+
+				setTimeout(() => {
+					p.connected = 1;
+					prev.connected = 1;
+				}, 1000 / 16);
+				stroke(`rgba(${color},${strokeOpacity})`);
 				line(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 				return;
+			} else {
 			}
 		});
 	}

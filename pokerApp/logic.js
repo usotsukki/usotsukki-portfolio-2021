@@ -31,7 +31,28 @@ export function readTable(cards) {
 	return hand;
 }
 
-function valueRelated(values, keys) {
+function isStreet(arr) {
+	const result = [];
+	if ("ACE" in arr) arr = arr.shift("ACE");
+	for (let i = 0; i < arr.length; i++) {
+		const contendor = arr.slice(i, i + 5);
+		if (contendor == "ACE" && contendor.concat(arr.slice(0, 4)) in STREETS)
+			result.shift(contendor.concat(arr.slice(0, 4)));
+		if (contendor.length == 5) if (contendor in STREETS) result.push(contendor);
+	}
+	return result[result.length - 1] ? result[result.length - 1] : false;
+}
+
+function streets() {
+	const streets = {};
+	for (let i = 0; i < 9; i++) {
+		let street = VALUES.slice(i, i + 5);
+		streets[street] = i;
+	}
+	streets[("ACE", "2", "3", "4", "5")] = 9;
+	return streets;
+}
+export function valueRelated(values, keys) {
 	const result = {};
 	const pairs = values.filter((k) => keys[k] == "2");
 	const sets = values.filter((k) => keys[k] == "3");
@@ -63,25 +84,4 @@ function valueRelated(values, keys) {
 	}
 
 	return result;
-}
-function isStreet(arr) {
-	const result = [];
-	if ("ACE" in arr) arr = arr.shift("ACE");
-	for (let i = 0; i < arr.length; i++) {
-		const contendor = arr.slice(i, i + 5);
-		if (contendor == "ACE" && contendor.concat(arr.slice(0, 4)) in STREETS)
-			result.shift(contendor.concat(arr.slice(0, 4)));
-		if (contendor.length == 5) if (contendor in STREETS) result.push(contendor);
-	}
-	return result[result.length - 1] ? result[result.length - 1] : false;
-}
-
-function streets() {
-	const streets = {};
-	for (let i = 0; i < 9; i++) {
-		let street = VALUES.slice(i, i + 5);
-		streets[street] = i;
-	}
-	streets[("ACE", "2", "3", "4", "5")] = 9;
-	return streets;
 }
