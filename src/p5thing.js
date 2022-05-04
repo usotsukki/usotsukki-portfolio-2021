@@ -1,15 +1,16 @@
-const fps = 40;
-let userPref = 1;
 const sliderInput = document.getElementById("brightness");
-
+let fps;
+let userPref;
+let dif;
 const updateSetup = () => {
 	const inputVal = localStorage.getItem("p5");
 	if (inputVal || inputVal === "0") {
 		sliderInput.value = inputVal;
 		userPref = inputVal;
 	} else userPref = 1;
+	dif = userPref > 7 ? 200 : userPref < 1 ? 100 : 140;
+	fps = userPref > 5 ? 60 : 40;
 };
-updateSetup();
 const updateVisitorView = () => {
 	localStorage.setItem("p5", `${sliderInput.value}`);
 	updateSetup();
@@ -25,6 +26,7 @@ let smax = Speed;
 const particles = [];
 
 function setup() {
+	updateSetup();
 	// performance related
 	frameRate(fps);
 	const canv = createCanvas(window.innerWidth, window.innerHeight);
@@ -88,7 +90,7 @@ class Particle {
 			const p = arr[i];
 			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 
-			if (d < 140) {
+			if (d < dif) {
 				const prev = arr[i - 1 > -1 ? i - 1 : 0];
 				let color = `255,255,255`;
 
@@ -100,11 +102,11 @@ class Particle {
 					prev.connected = userPref;
 				}, 25);
 
-				const strokeOpacity = p.connected * 0.05;
+				const strokeOpacity = p.connected * 0.025;
 
-				if (p.connected > 5) color = `10,189,198`;
-				if (p.connected > 17) color = `255,59,148`;
-				if (p.connected > 55) color = `255,0,0`;
+				if (p.connected > 7) color = `10,189,198`;
+				if (p.connected > 21) color = `255,59,148`;
+				if (p.connected > 73) color = `255,0,0`;
 
 				stroke(`rgba(${color},${strokeOpacity})`);
 
