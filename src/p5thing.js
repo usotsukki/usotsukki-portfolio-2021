@@ -1,4 +1,20 @@
 const fps = 40;
+let userPref = 1;
+const sliderInput = document.getElementById("brightness");
+
+const updateSetup = () => {
+	const inputVal = localStorage.getItem("p5");
+	if (inputVal || inputVal === "0") {
+		sliderInput.value = inputVal;
+		userPref = inputVal;
+	} else userPref = 1;
+};
+updateSetup();
+const updateVisitorView = () => {
+	localStorage.setItem("p5", `${sliderInput.value}`);
+	updateSetup();
+};
+
 let Speed = 1.7;
 let particleSize = 7;
 let backgroundColor = "#111116";
@@ -24,11 +40,12 @@ function setup() {
 }
 function draw() {
 	background(backgroundColor);
-	particles.forEach((p, index) => {
+	for (let i = 0; i < particles.length; i++) {
+		const p = particles[i];
 		p.update();
 		p.draw();
-		p.checkParticles(particles.slice(index));
-	});
+		p.checkParticles(particles.slice(i));
+	}
 }
 
 // particle core
@@ -63,7 +80,38 @@ class Particle {
 	}
 	// connect nearby particles with lines
 	checkParticles(particles) {
-		particles.forEach((p, i, arr) => {
+		const arr = particles;
+
+		// for i loop vs foreach
+
+		for (let i in arr) {
+			const p = arr[i];
+			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
+
+			if (d < 140) {
+				const prev = arr[i - 1 > -1 ? i - 1 : 0];
+				let color = `255,255,255`;
+
+				prev.connected *= 1.3;
+				p.connected *= 1.3;
+
+				setTimeout(() => {
+					p.connected = userPref;
+					prev.connected = userPref;
+				}, 25);
+
+				const strokeOpacity = p.connected * 0.05;
+
+				if (p.connected > 5) color = `10,189,198`;
+				if (p.connected > 17) color = `255,59,148`;
+				if (p.connected > 55) color = `255,0,0`;
+
+				stroke(`rgba(${color},${strokeOpacity})`);
+
+				line(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
+			}
+		}
+		/* particles.forEach((p, i, arr) => {
 			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 			if (d < 140) {
 				const prev = arr[i - 1 > -1 ? i - 1 : 0];
@@ -88,6 +136,6 @@ class Particle {
 				line(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 				return;
 			}
-		});
+		}); */
 	}
 }
