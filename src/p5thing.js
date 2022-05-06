@@ -2,13 +2,36 @@ const sliderInput = document.getElementById("brightness");
 let fps;
 let userPref;
 let dif;
+const windowWidth = window.innerWidth;
+let connInd =
+	windowWidth > 3000
+		? 1.03
+		: windowWidth > 2000
+		? 1.15
+		: windowWidth > 1100
+		? 1.2
+		: windowWidth > 900
+		? 1.15
+		: windowWidth < 600
+		? 1.3
+		: 1.1;
+let chainingDistance =
+	windowWidth > 3000
+		? 200
+		: windowWidth > 2000
+		? 170
+		: windowWidth > 1100
+		? 140
+		: 110;
+
+console.log(window.innerWidth);
 const updateSetup = () => {
 	const inputVal = localStorage.getItem("p5");
 	if (inputVal || inputVal === "0") {
 		sliderInput.value = inputVal;
-		userPref = inputVal;
+		userPref = inputVal * connInd;
 	} else userPref = 1;
-	dif = userPref > 7 ? 200 : userPref < 1 ? 100 : 140;
+	dif = userPref > 7 ? chainingDistance * 1.2 : chainingDistance;
 	fps = userPref > 5 ? 60 : 40;
 };
 const updateVisitorView = () => {
@@ -94,8 +117,8 @@ class Particle {
 				const prev = arr[i - 1 > -1 ? i - 1 : 0];
 				let color = `255,255,255`;
 
-				prev.connected *= 1.3;
-				p.connected *= 1.3;
+				prev.connected *= connInd;
+				p.connected *= connInd;
 
 				setTimeout(() => {
 					p.connected = userPref;
@@ -106,38 +129,15 @@ class Particle {
 
 				if (p.connected > 7) color = `10,189,198`;
 				if (p.connected > 21) color = `255,59,148`;
-				if (p.connected > 73) color = `255,0,0`;
+				if (p.connected > 73) {
+					color = `255,0,0`;
+					p.connected = 73;
+				}
 
 				stroke(`rgba(${color},${strokeOpacity})`);
 
 				line(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
 			}
 		}
-		/* particles.forEach((p, i, arr) => {
-			const d = dist(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
-			if (d < 140) {
-				const prev = arr[i - 1 > -1 ? i - 1 : 0];
-				let color = `255,255,255`;
-
-				prev.connected *= 1.3;
-				p.connected *= 1.3;
-
-				setTimeout(() => {
-					p.connected = 1;
-					prev.connected = 1;
-				}, 25);
-
-				const strokeOpacity = p.connected * 0.05;
-
-				if (p.connected > 5) color = `10,189,198`;
-				if (p.connected > 17) color = `255,59,148`;
-				if (p.connected > 55) color = `255,0,0`;
-
-				stroke(`rgba(${color},${strokeOpacity})`);
-
-				line(this.pos.x, this.pos.y, p.pos.x, p.pos.y);
-				return;
-			}
-		}); */
 	}
 }
