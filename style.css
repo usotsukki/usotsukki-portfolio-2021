@@ -2,6 +2,7 @@
 	padding: 0px;
 	margin: 0px;
 	box-sizing: border-box;
+	scroll-behavior: smooth;
 }
 
 :root {
@@ -101,7 +102,9 @@ body::-webkit-scrollbar {
 	font-size: 1.1rem;
 	letter-spacing: 0.1rem;
 }
-
+#prj {
+	cursor: pointer;
+}
 main {
 	display: flex;
 	flex-direction: column;
