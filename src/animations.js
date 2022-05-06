@@ -78,7 +78,9 @@ export function scrollSetup() {
 		x: convertRemToPixels(5),
 		opacity: 0,
 	});
-
+	tl.staggerTo(".nav-fs", 0, {
+		css: { display: "none" },
+	});
 	// Projects-section to front-panel
 	tl.staggerTo(".projects", 5, {
 		css: {
