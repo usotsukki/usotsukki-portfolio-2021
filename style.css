@@ -103,7 +103,7 @@ body::-webkit-scrollbar {
 	letter-spacing: 0.1rem;
 }
 #prj {
-	cursor: pointer;
+	cursor: pointer !important;
 }
 main {
 	display: flex;
