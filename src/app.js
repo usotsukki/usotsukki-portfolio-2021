@@ -1,5 +1,4 @@
 import { scrollSetup } from "./animations.js";
-
 history.scrollRestoration = "manual";
 
 window.onload = () => {
